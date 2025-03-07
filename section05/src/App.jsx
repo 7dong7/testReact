@@ -1,29 +1,39 @@
-import { useState } from 'react'
 import './App.css'
+import Header from "./components/Header"; // 확장자를 붙이지 않아도 된다
+import Main from "./components/Main";
+import Footer from "./components/Footer";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+
+/**
+ *  아래의 function 과 똑같다
+ *  화살표 함수로 만드는건 똑같다
+ *  컴포넌트로 만드는 경우 반드시 "대문자"로 시작할 것
+ *  
+ *  Header 컴포넌트를 다른 파일 생성한다
+ */
+// const Header = () => {
+//     return (
+//         <hader>
+//             <h1>header</h1>
+//         </hader>
+//     );
+// }
+
+/**
+ *  html 을 반환하는 함수를 컴포넌트라고 한다 => function App 이 컴포넌트
+ *  App 컴포넌트라고 부른다 (함수형으로 만든경우 "함수 컴포넌트" 라고 부른다)
+ *  가장 위에 있는 컴포넌트를 Root 컴포넌트라고 부른다
+ *  
+ *  App 아래에 Header, Main, Footer 가 자식으로 존재한다
+ */
+function App() { // App 컴포넌트는 부모 컴포넌트, Header 는 자식 컴포넌트
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-        </a>
-        <a href="https://react.dev" target="_blank">
-        </a>
-      </div>
-      <h1>Vite + Reactsd</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <Header /> {/* 이렇게 작성하게 되면 main 에서 App 컴포넌트를 불러올 때 App 안에 있는 Header 컴포넌트를 같이 가지고 간다 */}
+        {/* Header 와 같이 컴포넌트 안에 포함되어서 랜더링 되는 컴포넌트를 자식 컴포넌트라고 한다 */}
+        <Main/>
+        <Footer/>
     </>
   )
 }
