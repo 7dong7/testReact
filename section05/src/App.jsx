@@ -1,5 +1,10 @@
 import './App.css'
-import {useState} from "react"; // react State 를 사용하기 위해서
+import HookExam from "./components/HookExam";
+
+// import {useState} from "react"; // react State 를 사용하기 위해서
+// import Register from "./components/Register";
+// import Counter from "./components/Counter";
+// import Bulb from "./components/Bulb";
 // import Header from "./components/Header"; // 확장자를 붙이지 않아도 된다
 // import Main from "./components/Main";
 // import Footer from "./components/Footer";
@@ -7,40 +12,50 @@ import {useState} from "react"; // react State 를 사용하기 위해서
 
 
 function App() {
-    // 인수의 첫번째 => 초기값
-    //       두번째 => 상태를 변화시키는 함수
-    const [count, setCount] = useState(0); // 첫번째 값은 내가 설정한 값
-    const [light, setLight] = useState("OFF");
 
-    /**
-     *  첫번째 렌더링과 리랜더링에 대해서
-     *  
-     *  새로고침을 하게 되면 0으로 출력되고, +를 누를때마다 값이 하나씩 올라간다
-     *  
-     *  let light = "OFF" 이렇게 설정하고 값을 변경시키는 걸로 구현하지 않는 이유는
-     *  useState() 를 사용해서 state 를 변경해야지 "리렌더링" 이 이루아지기 때문이다
-     */
     return (
         <>
-            <div>
-                <h1>{light}</h1>
-                <button onClick={ () => {
-                    setLight(light === "ON" ? "OFF" : "ON");
-                }}>
-                    {light === "ON" ? "끄기" : "켜기"}
-                </button>
-            </div>
-            <div>
-                <h1>{count}</h1>
-                <button onClick={() => {
-                    setCount(count + 1);
-                }}>
-                    +
-                </button>
-            </div>
+            <HookExam />
         </>
     );
 }
+
+// function App() {
+//     return (
+//         <>
+//             <Register />
+//         </>
+//     );
+// }
+
+
+// /**
+//  *  랜더링 되는경우
+//  *  1. Probs 의 변경
+//  *  2. State 의 변경 (본인이 관리하는)
+//  *  3. 부모의 리랜더링
+//  */
+// function App() {
+//     // 인수의 첫번째 => 초기값
+//     //       두번째 => 상태를 변화시키는 함수
+//     const [count, setCount] = useState(0); // 첫번째 값은 내가 설정한 값
+//     const [light, setLight] = useState("OFF");
+//
+//     /**
+//      *  첫번째 렌더링과 리랜더링에 대해서
+//      *
+//      *  새로고침을 하게 되면 0으로 출력되고, +를 누를때마다 값이 하나씩 올라간다
+//      *
+//      *  let light = "OFF" 이렇게 설정하고 값을 변경시키는 걸로 구현하지 않는 이유는
+//      *  useState() 를 사용해서 state 를 변경해야지 "리렌더링" 이 이루아지기 때문이다
+//      */
+//     return (
+//         <>
+//             <Bulb />
+//             <Counter /> {/* 일렇게 하면 위의 light 는 리랜더링이 일어나지 않는다 */}
+//         </>
+//     );
+// }
 
 // function App() { // App 컴포넌트는 부모 컴포넌트, Header 는 자식 컴포넌트
 //
